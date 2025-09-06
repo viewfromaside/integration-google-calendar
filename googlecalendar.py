@@ -170,40 +170,40 @@ class GoogleCalendarService:
 
     @authenticate
     def create_event(self, event_data: dict) -> str:
-        """
+       """
         Create a new Google Calendar event.
-
+        
         Args:
-            event_data (dict): Event resource body as defined by Google Calendar API.
-
-            Keys mais comuns:
-                - summary (str): Título do evento. [Obrigatório]
-                - description (str): Texto opcional com detalhes.
-                - location (str): Endereço físico ou link (ex: Zoom/Meet).
-                - colorId (str): ID da cor do evento (1–11).
-
-                - start (dict): Data/hora de início [Obrigatório]
-                    - dateTime (str): Ex: "2025-09-06T10:00:00-03:00"
-                    - timeZone (str): Ex: "America/Sao_Paulo"
-
-                - end (dict): Data/hora de término [Obrigatório]
-                    - dateTime (str): Ex: "2025-09-06T11:00:00-03:00"
-                    - timeZone (str): Ex: "America/Sao_Paulo"
-
-                - attendees (list[dict]): Lista de participantes
-                    Ex: [{"email": "pessoa1@email.com"}, {"email": "pessoa2@email.com"}]
-
-                - reminders (dict): Configuração de lembretes
-                    - useDefault (bool): Usa os lembretes padrão do calendário.
-                    - overrides (list[dict]): Lista de lembretes customizados
-                        Ex: [{"method": "email", "minutes": 30},
-                             {"method": "popup", "minutes": 10}]
-
-                - recurrence (list[str]): Regras de repetição
-                    Ex: ["RRULE:FREQ=WEEKLY;COUNT=10"] (evento semanal por 10 semanas)
-
+            event_data (dict): Event resource body as defined by the Google Calendar API.
+        
+            Most common keys:
+                - summary (str): Event title. [Required]
+                - description (str): Optional text with details.
+                - location (str): Physical address or link (e.g., Zoom/Meet).
+                - colorId (str): Event color ID (1–11).
+        
+                - start (dict): Start date/time [Required]
+                    - dateTime (str): Example: "2025-09-06T10:00:00-03:00"
+                    - timeZone (str): Example: "America/Sao_Paulo"
+        
+                - end (dict): End date/time [Required]
+                    - dateTime (str): Example: "2025-09-06T11:00:00-03:00"
+                    - timeZone (str): Example: "America/Sao_Paulo"
+        
+                - attendees (list[dict]): List of participants
+                    Example: [{"email": "person1@email.com"}, {"email": "person2@email.com"}]
+        
+                - reminders (dict): Reminder settings
+                    - useDefault (bool): Use the calendar's default reminders.
+                    - overrides (list[dict]): List of custom reminders
+                        Example: [{"method": "email", "minutes": 30},
+                                  {"method": "popup", "minutes": 10}]
+        
+                - recurrence (list[str]): Recurrence rules
+                    Example: ["RRULE:FREQ=WEEKLY;COUNT=10"] (weekly event for 10 weeks)
+        
         Returns:
-            str: JSON string contendo os dados do evento criado ou mensagem de erro.
+            str: JSON string containing the created event data or an error message.
         """
         try:
             event = (
